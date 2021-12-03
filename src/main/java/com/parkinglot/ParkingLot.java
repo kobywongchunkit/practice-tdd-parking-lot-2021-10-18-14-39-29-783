@@ -19,7 +19,7 @@ public class ParkingLot {
     }
 
     public Car fetch(Ticket ticket) {
-        if (!isTicketValid(ticket)) throw new UnrecognizedParkingException("Unrecognized parking ticket.");
+        if (!isTicketValid(ticket)) throw new UnrecognizedParkingTicketException("Unrecognized parking ticket.");
         Car fetchedCar = ticketCarMap.get(ticket);
         if (fetchedCar != null){
             ticketCarMap.remove(ticket);
