@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 
+import static com.parkinglot.Exception.ExceptionMessage.noAvailablePositionExceptionMessage;
 import static com.parkinglot.Exception.ExceptionMessage.unrecognizedParkingTicketExceptionMessage;
 
 public class ParkingBoy {
@@ -13,20 +14,22 @@ public class ParkingBoy {
     public ParkingBoy(List<ParkingLot> parkingLot) {
         this.parkingLot = parkingLot;
     }
+
     public Ticket park(Car car){
-        return parkingLot.stream().filter(parkingLot -> parkingLot.getAvailablePosition() > 0)
-                .findFirst()
-                .get()
-                .park(car);
+        Optional<ParkingLot> validParkingLottoPark = parkingLot.stream().filter(parkingLot -> parkingLot.getAvailablePosition() > 0).findFirst();
+        if(!validParkingLottoPark.isPresent())
+            throw new NoAvailablePositionException(noAvailablePositionExceptionMessage);
+        else
+             return validParkingLottoPark.get().park(car);
     }
 
     public Car fetch(Ticket ticket) {
 
-        Optional<ParkingLot> validParkinglot = parkingLot.stream().filter(parkingLot -> parkingLot.isTicketValid(ticket)).findFirst();
+        Optional<ParkingLot> validTickettoFetchCar = parkingLot.stream().filter(parkingLot -> parkingLot.isTicketValid(ticket)).findFirst();
 
-        if (!validParkinglot.isPresent())
+        if (!validTickettoFetchCar.isPresent())
             throw new UnrecognizedParkingTicketException(unrecognizedParkingTicketExceptionMessage);
         else
-            return validParkinglot.get().fetch(ticket);
+            return validTickettoFetchCar.get().fetch(ticket);
     }
 }
