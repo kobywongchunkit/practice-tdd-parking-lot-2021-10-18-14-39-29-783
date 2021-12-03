@@ -78,4 +78,21 @@ public class ParkingLotManagerTest {
         assertEquals(9, firstParkingLot.getAvailablePosition());
         assertEquals(10,secondParkingLot.getAvailablePosition());
     }
+    @Test
+    void should_return_ticket_when_park_car_given_parking_lot_manager_with_two_parking_lot_and_parking_lot_1_is_full(){
+        //given
+        ParkingLot firstParkingLot = new ParkingLot(1);
+        ParkingLot secondParkingLot = new ParkingLot();
+        List<ParkingLot> ParkingLotList= new ArrayList<>();
+        ParkingLotList.add(firstParkingLot);
+        ParkingLotList.add(secondParkingLot);
+        firstParkingLot.park(new Car());
+        ParkingLotManager parkinglotmanager = new ParkingLotManager(ParkingLotList, null);
+        //When
+        Ticket ticket = parkinglotmanager.park(new Car());
+        //then
+        assertNotNull(ticket);
+        assertEquals(0, firstParkingLot.getAvailablePosition());
+        assertEquals(9, secondParkingLot.getAvailablePosition());
+    }
 }
