@@ -1,5 +1,7 @@
 package com.parkinglot;
 
+import com.parkinglot.Exception.NoAvailablePositionException;
+import com.parkinglot.Exception.UnrecognizedParkingTicketException;
 import org.junit.jupiter.api.Test;
 
 import static com.parkinglot.ExceptionMessage.*;
