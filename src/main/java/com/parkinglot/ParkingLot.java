@@ -37,7 +37,7 @@ public class ParkingLot {
         return fetchedCar;
     }
 
-    private boolean isTicketValid(Ticket ticket){
+    public boolean isTicketValid(Ticket ticket){
         return ticketCarMap.containsKey(ticket);
     }
 }
