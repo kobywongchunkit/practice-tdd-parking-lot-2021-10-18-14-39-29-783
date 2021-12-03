@@ -24,10 +24,10 @@ public class ParkingLotManager extends ParkingBoy{
     }
 
     public Car fetchFromBoy(Ticket ticket) {
-        Optional<ParkingBoy> validParkingBoytoFetchCar = managementList.stream().filter(parkingBoy -> parkingBoy.isTicketCanFetchCar(ticket)).findFirst();
-        if (!validParkingBoytoFetchCar.isPresent())
-            throw new UnrecognizedParkingTicketException(unrecognizedParkingTicketExceptionMessage);
-        else
-            return validParkingBoytoFetchCar.get().fetch(ticket);
+        return managementList.stream()
+                .filter(parkingBoy -> parkingBoy.isTicketCanFetchCar(ticket))
+                .findFirst()
+                .orElse(managementList.get(managementList.size()-1))
+                .fetch(ticket);
     }
 }
