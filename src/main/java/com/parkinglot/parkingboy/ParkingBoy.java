@@ -35,4 +35,8 @@ public class ParkingBoy {
         else
             return validTickettoFetchCar.get().fetch(ticket);
     }
+
+    public boolean isTicketCanFetchCar(Ticket ticket){
+        return parkingLot.stream().anyMatch(parkingLot -> parkingLot.isTicketValid(ticket));
+    }
 }

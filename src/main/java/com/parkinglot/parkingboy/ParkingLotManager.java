@@ -3,9 +3,13 @@ package com.parkinglot.parkingboy;
 import com.parkinglot.Car;
 import com.parkinglot.ParkingLot;
 import com.parkinglot.Ticket;
+import com.parkinglot.exception.UnrecognizedParkingTicketException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
+import static com.parkinglot.exception.ExceptionMessage.unrecognizedParkingTicketExceptionMessage;
 
 public class ParkingLotManager extends ParkingBoy{
     public List<ParkingBoy> parkingBoy;
@@ -21,6 +25,10 @@ public class ParkingLotManager extends ParkingBoy{
     }
 
     public Car fetchFromBoy(Ticket ticket) {
-        return null;
+        Optional<ParkingBoy> validParkingBoytoFetchCar = parkingBoy.stream().filter(parkingBoy -> parkingBoy.isTicketCanFetchCar(ticket)).findFirst();
+        if (!validParkingBoytoFetchCar.isPresent())
+            throw new UnrecognizedParkingTicketException(unrecognizedParkingTicketExceptionMessage);
+        else
+            return validParkingBoytoFetchCar.get().fetch(ticket);
     }
 }

@@ -25,7 +25,7 @@ public class ParkingLotManagerTest {
         assertNotNull(ticket);
     }
     @Test
-    void should_return_ticket_when_fetch_car_by_parking_boy_given_parking_lot_manager_with_parkingBoy_and_a_parked_car() {
+    void should_return_car_when_fetch_car_by_parking_boy_given_parking_lot_manager_with_parkingBoy_and_a_parked_car() {
         //given
         ParkingBoy parkingBoy_1 = new ParkingBoy(new ArrayList<>(Arrays.asList(new ParkingLot(), new ParkingLot())));
         ParkingBoy parkingBoy_2 = new SuperSmartParkingBoy(new ArrayList<>(Arrays.asList(new ParkingLot(), new ParkingLot())));
