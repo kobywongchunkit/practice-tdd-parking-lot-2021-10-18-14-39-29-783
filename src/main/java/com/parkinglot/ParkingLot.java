@@ -19,6 +19,15 @@ public class ParkingLot {
     }
 
     public Car fetch(Ticket ticket) {
-        return null;
+        if (ticketCarMap.size() < 1 || !isTicketValid(ticket)) return null;
+        Car fetchedCar = ticketCarMap.get(ticket);
+        if (fetchedCar != null){
+            ticketCarMap.remove(ticket);
+        }
+        return fetchedCar;
+    }
+
+    private boolean isTicketValid(Ticket ticket){
+        return ticketCarMap.containsKey(ticket);
     }
 }
