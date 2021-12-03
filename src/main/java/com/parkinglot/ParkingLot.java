@@ -3,13 +3,17 @@ package com.parkinglot;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.parkinglot.ExceptionMessage.*;
+
 public class ParkingLot {
     Map<Ticket, Car> ticketCarMap = new HashMap<>();
-    private  int capacity;
+    private int capacity;
+
     public ParkingLot(int capacity){ this.capacity = capacity;}
     public ParkingLot(){this.capacity = 10;}
     public Ticket park(Car car) {
-        if (!hasAvailablePosition()) throw new NoAvailablePositionException("No available position.");
+        if (!hasAvailablePosition())
+            throw new NoAvailablePositionException(noAvailablePositionExceptionMessage);
         Ticket ticket = new Ticket();
         ticketCarMap.put(ticket, car);
         return ticket;
@@ -19,7 +23,8 @@ public class ParkingLot {
     }
 
     public Car fetch(Ticket ticket) {
-        if (!isTicketValid(ticket)) throw new UnrecognizedParkingTicketException("Unrecognized parking ticket.");
+        if (!isTicketValid(ticket))
+            throw new UnrecognizedParkingTicketException(unrecognizedParkingTicketExceptionMessage);
         Car fetchedCar = ticketCarMap.get(ticket);
         if (fetchedCar != null){
             ticketCarMap.remove(ticket);

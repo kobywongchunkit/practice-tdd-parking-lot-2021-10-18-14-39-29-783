@@ -2,6 +2,7 @@ package com.parkinglot;
 
 import org.junit.jupiter.api.Test;
 
+import static com.parkinglot.ExceptionMessage.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ParkingLotTest {
@@ -26,7 +27,7 @@ public class ParkingLotTest {
         NoAvailablePositionException noAvailablePositionException =assertThrows(NoAvailablePositionException.class,()->{
             parkingLot.park(car);
         });
-        assertEquals("No available position.", noAvailablePositionException.getMessage());
+        assertEquals(noAvailablePositionExceptionMessage, noAvailablePositionException.getMessage());
     }
     @Test
     void should_return_parked_car_when_fetch_car_given_parking_lot_with_parked_car(){
@@ -65,7 +66,7 @@ public class ParkingLotTest {
         UnrecognizedParkingTicketException unrecognizedParkingTicketException = assertThrows(UnrecognizedParkingTicketException.class, ()->{
             parkingLot.fetch(incorrectTicket);
         });
-        assertEquals("Unrecognized parking ticket.", unrecognizedParkingTicketException.getMessage());
+        assertEquals(unrecognizedParkingTicketExceptionMessage, unrecognizedParkingTicketException.getMessage());
     }
     @Test
     void should_throw_unrecognized_parking_ticket_exception_when_fetch_car_given_parking_lot_with_used_ticket(){
@@ -78,6 +79,6 @@ public class ParkingLotTest {
         UnrecognizedParkingTicketException unrecognizedParkingTicketException = assertThrows(UnrecognizedParkingTicketException.class, ()->{
             parkingLot.fetch(ticket);
         });
-        assertEquals("Unrecognized parking ticket.", unrecognizedParkingTicketException.getMessage());
+        assertEquals(unrecognizedParkingTicketExceptionMessage, unrecognizedParkingTicketException.getMessage());
     }
 }
