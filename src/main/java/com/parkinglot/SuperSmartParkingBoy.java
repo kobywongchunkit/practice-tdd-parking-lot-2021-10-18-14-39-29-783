@@ -14,7 +14,7 @@ public class SuperSmartParkingBoy extends ParkingBoy {
     }
     @Override
     public Ticket park(Car car){
-        Optional<ParkingLot> validParkingLottoPark = parkingLot.stream().max(Comparator.comparing(ParkingLot::getAvailablePositionRate));
+        Optional<ParkingLot> validParkingLottoPark = parkingLot.stream().min(Comparator.comparing(ParkingLot::getAvailablePositionRate));
         if(!validParkingLottoPark.isPresent())
             throw new NoAvailablePositionException(noAvailablePositionExceptionMessage);
         else
