@@ -24,5 +24,18 @@ public class ParkingLotManagerTest {
         //then
         assertNotNull(ticket);
     }
+    @Test
+    void should_return_ticket_when_fetch_car_by_parking_boy_given_parking_lot_manager_with_parkingBoy_and_a_parked_car() {
+        //given
+        ParkingBoy parkingBoy_1 = new ParkingBoy(new ArrayList<>(Arrays.asList(new ParkingLot(), new ParkingLot())));
+        ParkingBoy parkingBoy_2 = new SuperSmartParkingBoy(new ArrayList<>(Arrays.asList(new ParkingLot(), new ParkingLot())));
+        Car car = new Car();
+        Ticket ticket = parkingBoy_2.park(car);
+        ParkingLotManager parkinglotmanager = new ParkingLotManager(null,new ArrayList<>(Arrays.asList(parkingBoy_1,parkingBoy_2)));
+        //When
+        Car fetchedCar = parkinglotmanager.fetchFromBoy(ticket);
+        //then
+        assertEquals(car, fetchedCar);
+    }
 
 }

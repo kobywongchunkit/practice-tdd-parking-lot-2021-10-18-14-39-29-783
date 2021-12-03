@@ -19,4 +19,8 @@ public class ParkingLotManager extends ParkingBoy{
             return null;
         return parkingBoy.get(boyIndex).park(car);
     }
+
+    public Car fetchFromBoy(Ticket ticket) {
+        return null;
+    }
 }
