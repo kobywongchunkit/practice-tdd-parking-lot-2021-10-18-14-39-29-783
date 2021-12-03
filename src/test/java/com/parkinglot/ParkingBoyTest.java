@@ -43,6 +43,7 @@ public class ParkingBoyTest {
         ParkingLotList.add(secondParkingLot);
         firstParkingLot.park(new Car());
         ParkingBoy parkingboy = new ParkingBoy(ParkingLotList);
+        //When
         Ticket ticket = parkingboy.park(new Car());
         //then
         assertNotNull(ticket);
@@ -62,6 +63,7 @@ public class ParkingBoyTest {
         Ticket ticket1 = firstParkingLot.park(car1);
         Ticket ticket2 = firstParkingLot.park(car2);
         ParkingBoy parkingboy = new ParkingBoy(ParkingLotList);
+        //when
         Car fetchedCar1 = parkingboy.fetch(ticket1);
         Car fetchedCar2 = parkingboy.fetch(ticket2);
         //then
@@ -81,6 +83,7 @@ public class ParkingBoyTest {
         Ticket ticket1 = firstParkingLot.park(car1);
         Ticket ticket2 = secondParkingLot.park(car2);
         ParkingBoy parkingboy = new ParkingBoy(ParkingLotList);
+        //when
         Car fetchedCar1 = parkingboy.fetch(ticket1);
         Car fetchedCar2 = parkingboy.fetch(ticket2);
         //then
