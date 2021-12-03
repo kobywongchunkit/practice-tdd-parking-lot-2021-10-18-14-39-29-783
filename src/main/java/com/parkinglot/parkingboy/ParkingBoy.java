@@ -19,21 +19,19 @@ public class ParkingBoy {
     }
 
     public Ticket park(Car car){
-        Optional<ParkingLot> validParkingLottoPark = parkingLot.stream().filter(parkingLot -> parkingLot.getAvailablePosition() > 0).findFirst();
-        if(!validParkingLottoPark.isPresent())
-            throw new NoAvailablePositionException(noAvailablePositionExceptionMessage);
-        else
-             return validParkingLottoPark.get().park(car);
+             return parkingLot.stream()
+                     .filter(parkingLot -> parkingLot.getAvailablePosition() > 0)
+                     .findFirst()
+                     .orElse(parkingLot.get(parkingLot.size()-1))
+                     .park(car);
     }
 
     public Car fetch(Ticket ticket) {
-
-        Optional<ParkingLot> validParkingLotFetchByTicket = parkingLot.stream().filter(parkingLot -> parkingLot.isTicketValid(ticket)).findFirst();
-
-        if (!validParkingLotFetchByTicket.isPresent())
-            throw new UnrecognizedParkingTicketException(unrecognizedParkingTicketExceptionMessage);
-        else
-            return validParkingLotFetchByTicket.get().fetch(ticket);
+        return parkingLot.stream()
+                .filter(parkingLot -> parkingLot.isTicketValid(ticket))
+                .findFirst()
+                .orElse(parkingLot.get(parkingLot.size()-1))
+                .fetch(ticket);
     }
 
     public boolean isTicketCanFetchCar(Ticket ticket){
