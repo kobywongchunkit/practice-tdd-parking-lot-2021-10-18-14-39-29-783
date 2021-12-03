@@ -24,6 +24,7 @@ public class ParkingLot {
     private boolean hasAvailablePosition(){
         return ticketCarMap.size() < capacity;
     }
+
     public int getAvailablePosition(){
         return capacity - ticketCarMap.size();
     }
@@ -39,5 +40,9 @@ public class ParkingLot {
 
     public boolean isTicketValid(Ticket ticket){
         return ticketCarMap.containsKey(ticket);
+    }
+
+    public float getAvailablePositionRate(){
+        return new Integer(ticketCarMap.size()).floatValue()/new Integer(capacity).floatValue();
     }
 }

@@ -14,6 +14,10 @@ public class SuperSmartParkingBoy extends ParkingBoy {
     }
     @Override
     public Ticket park(Car car){
-        return null;
+        Optional<ParkingLot> validParkingLottoPark = parkingLot.stream().max(Comparator.comparing(ParkingLot::getAvailablePositionRate));
+        if(!validParkingLottoPark.isPresent())
+            throw new NoAvailablePositionException(noAvailablePositionExceptionMessage);
+        else
+            return validParkingLottoPark.get().park(car);
     }
 }
