@@ -1,11 +1,13 @@
 package com.parkinglot;
 
+import com.parkinglot.Exception.NoAvailablePositionException;
 import com.parkinglot.Exception.UnrecognizedParkingTicketException;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.parkinglot.Exception.ExceptionMessage.noAvailablePositionExceptionMessage;
 import static com.parkinglot.Exception.ExceptionMessage.unrecognizedParkingTicketExceptionMessage;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -96,5 +98,23 @@ public class SuperSmartParkingBoyTest {
             parkingboy.fetch(ticket);
         });
         assertEquals(unrecognizedParkingTicketExceptionMessage, unrecognizedParkingTicketException.getMessage());
+    }
+    @Test
+    void should_throw_no_available_position_when_park_car_given_smart_parking_boy_with_two_parking_full_parking_lot_and_car(){
+        //given
+        ParkingLot firstParkingLot = new ParkingLot(1);
+        ParkingLot secondParkingLot = new ParkingLot(1);
+        List<ParkingLot> ParkingLotList= new ArrayList<>();
+        ParkingLotList.add(firstParkingLot);
+        ParkingLotList.add(secondParkingLot);
+        ParkingBoy parkingboy = new SuperSmartParkingBoy(ParkingLotList);
+        firstParkingLot.park(new Car());
+        secondParkingLot.park(new Car());
+        //when
+        //then
+        NoAvailablePositionException noAvailablePositionException =assertThrows(NoAvailablePositionException.class,()->{
+            parkingboy.park(new Car());
+        });
+        assertEquals(noAvailablePositionExceptionMessage, noAvailablePositionException.getMessage());
     }
 }
