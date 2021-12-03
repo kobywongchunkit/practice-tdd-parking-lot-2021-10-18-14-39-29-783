@@ -1,4 +1,4 @@
-package com.parkinglot.Exception;
+package com.parkinglot.exception;
 
 public class ExceptionMessage {
     public static String noAvailablePositionExceptionMessage = "No available position.";

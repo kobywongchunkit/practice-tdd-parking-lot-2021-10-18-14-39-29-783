@@ -1,7 +1,7 @@
-package com.parkinglot.ParkingBoy;
+package com.parkinglot.parkingboy;
 
 import com.parkinglot.Car;
-import com.parkinglot.Exception.*;
+import com.parkinglot.exception.*;
 import com.parkinglot.ParkingLot;
 import com.parkinglot.Ticket;
 
@@ -9,8 +9,8 @@ import java.util.List;
 import java.util.Optional;
 
 
-import static com.parkinglot.Exception.ExceptionMessage.noAvailablePositionExceptionMessage;
-import static com.parkinglot.Exception.ExceptionMessage.unrecognizedParkingTicketExceptionMessage;
+import static com.parkinglot.exception.ExceptionMessage.noAvailablePositionExceptionMessage;
+import static com.parkinglot.exception.ExceptionMessage.unrecognizedParkingTicketExceptionMessage;
 
 public class ParkingBoy {
     protected List<ParkingLot> parkingLot;

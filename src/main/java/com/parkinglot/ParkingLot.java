@@ -1,12 +1,12 @@
 package com.parkinglot;
 
-import com.parkinglot.Exception.NoAvailablePositionException;
-import com.parkinglot.Exception.UnrecognizedParkingTicketException;
+import com.parkinglot.exception.NoAvailablePositionException;
+import com.parkinglot.exception.UnrecognizedParkingTicketException;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.parkinglot.Exception.ExceptionMessage.*;
+import static com.parkinglot.exception.ExceptionMessage.*;
 
 public class ParkingLot {
     Map<Ticket, Car> ticketCarMap = new HashMap<>();

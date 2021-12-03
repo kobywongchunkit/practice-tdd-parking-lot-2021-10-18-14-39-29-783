@@ -1,16 +1,16 @@
 package com.parkinglot;
 
-import com.parkinglot.Exception.NoAvailablePositionException;
-import com.parkinglot.Exception.UnrecognizedParkingTicketException;
-import com.parkinglot.ParkingBoy.ParkingBoy;
-import com.parkinglot.ParkingBoy.SmartParkingBoy;
+import com.parkinglot.exception.NoAvailablePositionException;
+import com.parkinglot.exception.UnrecognizedParkingTicketException;
+import com.parkinglot.parkingboy.ParkingBoy;
+import com.parkinglot.parkingboy.SmartParkingBoy;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.parkinglot.Exception.ExceptionMessage.noAvailablePositionExceptionMessage;
-import static com.parkinglot.Exception.ExceptionMessage.unrecognizedParkingTicketExceptionMessage;
+import static com.parkinglot.exception.ExceptionMessage.noAvailablePositionExceptionMessage;
+import static com.parkinglot.exception.ExceptionMessage.unrecognizedParkingTicketExceptionMessage;
 import static org.junit.jupiter.api.Assertions.*;
 
 

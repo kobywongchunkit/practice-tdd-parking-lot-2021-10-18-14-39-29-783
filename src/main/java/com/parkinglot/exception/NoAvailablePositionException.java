@@ -1,4 +1,4 @@
-package com.parkinglot.Exception;
+package com.parkinglot.exception;
 
 public class NoAvailablePositionException extends RuntimeException{
     public NoAvailablePositionException(String msg){
