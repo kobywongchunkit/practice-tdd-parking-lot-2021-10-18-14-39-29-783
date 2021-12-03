@@ -6,7 +6,7 @@ import com.parkinglot.Exception.UnrecognizedParkingTicketException;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.parkinglot.ExceptionMessage.*;
+import static com.parkinglot.Exception.ExceptionMessage.*;
 
 public class ParkingLot {
     Map<Ticket, Car> ticketCarMap = new HashMap<>();

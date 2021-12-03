@@ -4,7 +4,7 @@ import com.parkinglot.Exception.NoAvailablePositionException;
 import com.parkinglot.Exception.UnrecognizedParkingTicketException;
 import org.junit.jupiter.api.Test;
 
-import static com.parkinglot.ExceptionMessage.*;
+import static com.parkinglot.Exception.ExceptionMessage.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ParkingLotTest {
