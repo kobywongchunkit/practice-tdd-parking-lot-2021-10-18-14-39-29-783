@@ -208,7 +208,7 @@ public class ParkingLotManagerTest {
     }
 
     @Test
-    void should_throw_unrecognized_parking_ticket_exception_when_fetch_car_by_boy_given_two_parking_boy_with_two_parking_lot_and_used_ticket() {
+    void should_throw_unrecognized_parking_ticket_exception_when_fetch_car_by_boy_given_parking_lot_manager_with_two_parking_boy_with_two_parking_lot_and_used_ticket() {
         //given
         ParkingBoy parkingBoy_1 = new ParkingBoy(new ArrayList<>(Arrays.asList(new ParkingLot(), new ParkingLot())));
         ParkingBoy parkingBoy_2 = new SuperSmartParkingBoy(new ArrayList<>(Arrays.asList(new ParkingLot(), new ParkingLot())));
