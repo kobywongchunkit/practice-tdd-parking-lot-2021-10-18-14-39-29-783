@@ -28,12 +28,12 @@ public class ParkingBoy {
 
     public Car fetch(Ticket ticket) {
 
-        Optional<ParkingLot> validTickettoFetchCar = parkingLot.stream().filter(parkingLot -> parkingLot.isTicketValid(ticket)).findFirst();
+        Optional<ParkingLot> validParkingLotFetchByTicket = parkingLot.stream().filter(parkingLot -> parkingLot.isTicketValid(ticket)).findFirst();
 
-        if (!validTickettoFetchCar.isPresent())
+        if (!validParkingLotFetchByTicket.isPresent())
             throw new UnrecognizedParkingTicketException(unrecognizedParkingTicketExceptionMessage);
         else
-            return validTickettoFetchCar.get().fetch(ticket);
+            return validParkingLotFetchByTicket.get().fetch(ticket);
     }
 
     public boolean isTicketCanFetchCar(Ticket ticket){
