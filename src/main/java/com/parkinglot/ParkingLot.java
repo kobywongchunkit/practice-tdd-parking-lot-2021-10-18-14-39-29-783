@@ -9,7 +9,7 @@ public class ParkingLot {
     public ParkingLot(int capacity){ this.capacity = capacity;}
     public ParkingLot(){this.capacity = 10;}
     public Ticket park(Car car) {
-        if (!hasAvailablePosition()) return null;
+        if (!hasAvailablePosition()) throw new NoAvailablePositionException("No available position.");
         Ticket ticket = new Ticket();
         ticketCarMap.put(ticket, car);
         return ticket;
