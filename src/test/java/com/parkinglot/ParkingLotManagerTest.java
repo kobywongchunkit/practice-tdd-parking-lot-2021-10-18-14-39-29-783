@@ -12,6 +12,7 @@ import java.util.Arrays;
 import java.util.List;
 
 
+import static com.parkinglot.exception.ExceptionMessage.noAvailablePositionExceptionMessage;
 import static com.parkinglot.exception.ExceptionMessage.unrecognizedParkingTicketExceptionMessage;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -171,5 +172,23 @@ public class ParkingLotManagerTest {
             parkinglotmanager.fetch(ticket);
         });
         assertEquals(unrecognizedParkingTicketExceptionMessage, unrecognizedParkingTicketException.getMessage());
+    }
+    @Test
+    void should_throw_no_available_position_when_park_car_given_parking_lot_manager_with_two_parking_full_parking_lot_and_car(){
+        //given
+        ParkingLot firstParkingLot = new ParkingLot(1);
+        ParkingLot secondParkingLot = new ParkingLot(1);
+        List<ParkingLot> ParkingLotList= new ArrayList<>();
+        ParkingLotList.add(firstParkingLot);
+        ParkingLotList.add(secondParkingLot);
+        ParkingLotManager parkinglotmanager = new ParkingLotManager(ParkingLotList, null);
+        firstParkingLot.park(new Car());
+        secondParkingLot.park(new Car());
+        //when
+        //then
+        NoAvailablePositionException noAvailablePositionException =assertThrows(NoAvailablePositionException.class,()->{
+            parkinglotmanager.park(new Car());
+        });
+        assertEquals(noAvailablePositionExceptionMessage, noAvailablePositionException.getMessage());
     }
 }
