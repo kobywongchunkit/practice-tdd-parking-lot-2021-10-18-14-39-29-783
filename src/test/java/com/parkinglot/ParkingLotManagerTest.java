@@ -206,4 +206,20 @@ public class ParkingLotManagerTest {
         });
         assertEquals(unrecognizedParkingTicketExceptionMessage, unrecognizedParkingTicketException.getMessage());
     }
+
+    @Test
+    void should_throw_unrecognized_parking_ticket_exception_when_fetch_car_by_boy_given_two_parking_boy_with_two_parking_lot_and_used_ticket() {
+        //given
+        ParkingBoy parkingBoy_1 = new ParkingBoy(new ArrayList<>(Arrays.asList(new ParkingLot(), new ParkingLot())));
+        ParkingBoy parkingBoy_2 = new SuperSmartParkingBoy(new ArrayList<>(Arrays.asList(new ParkingLot(), new ParkingLot())));
+        Ticket ticket = parkingBoy_2.park(new Car());
+        parkingBoy_2.fetch(ticket);
+        ParkingLotManager parkinglotmanager = new ParkingLotManager(null,new ArrayList<>(Arrays.asList(parkingBoy_1,parkingBoy_2)));
+        //When
+        //then
+        UnrecognizedParkingTicketException unrecognizedParkingTicketException =assertThrows(UnrecognizedParkingTicketException.class,()->{
+            parkinglotmanager.fetchFromBoy(ticket);
+        });
+        assertEquals(unrecognizedParkingTicketExceptionMessage, unrecognizedParkingTicketException.getMessage());
+    }
 }
