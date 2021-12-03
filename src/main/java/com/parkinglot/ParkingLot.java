@@ -24,7 +24,9 @@ public class ParkingLot {
     private boolean hasAvailablePosition(){
         return ticketCarMap.size() < capacity;
     }
-
+    public int getAvailablePosition(){
+        return capacity - ticketCarMap.size();
+    }
     public Car fetch(Ticket ticket) {
         if (!isTicketValid(ticket))
             throw new UnrecognizedParkingTicketException(unrecognizedParkingTicketExceptionMessage);
