@@ -232,7 +232,7 @@ public class ParkingLotManagerTest {
         //when
         //then
         NoAvailablePositionException noAvailablePositionException =assertThrows(NoAvailablePositionException.class,()->{
-            parkinglotmanager.parkByBoy(2,new Car());
+            parkinglotmanager.parkByBoy(0,new Car());
         });
         assertEquals(noAvailablePositionExceptionMessage, noAvailablePositionException.getMessage());
     }
