@@ -115,4 +115,24 @@ public class ParkingLotManagerTest {
         assertEquals(fetchedCar1, car1);
         assertEquals(fetchedCar2, car2);
     }
+    @Test
+    void should_return_two_car_when_fetch_two_car_given_parking_lot_manager_with_two_parking_lot_with_two_parked_car_in_different_parking_lot(){
+        //given
+        ParkingLot firstParkingLot = new ParkingLot();
+        ParkingLot secondParkingLot = new ParkingLot();
+        List<ParkingLot> ParkingLotList= new ArrayList<>();
+        ParkingLotList.add(firstParkingLot);
+        ParkingLotList.add(secondParkingLot);
+        Car car1 = new Car();
+        Car car2 = new Car();
+        Ticket ticket1 = firstParkingLot.park(car1);
+        Ticket ticket2 = secondParkingLot.park(car2);
+        ParkingLotManager parkinglotmanager = new ParkingLotManager(ParkingLotList, null);
+        //when
+        Car fetchedCar1 = parkinglotmanager.fetch(ticket1);
+        Car fetchedCar2 = parkinglotmanager.fetch(ticket2);
+        //then
+        assertEquals(fetchedCar1, car1);
+        assertEquals(fetchedCar2, car2);
+    }
 }
