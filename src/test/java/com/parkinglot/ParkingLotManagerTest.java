@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -51,5 +52,15 @@ public class ParkingLotManagerTest {
         //then
         assertEquals(fetchedCar1, car1);
         assertEquals(fetchedCar2, car2);
+    }
+    @Test
+    void should_return_ticket_when_park_car_given_parking_lot_manager_with_one_parking_lot(){
+        //given
+        List<ParkingLot> ParkingLotList= new ArrayList<>();
+        ParkingLotList.add(new ParkingLot());
+        ParkingLotManager parkinglotmanager = new ParkingLotManager(ParkingLotList, null);
+        Ticket ticket = parkinglotmanager.park(new Car());
+        //then
+        assertNotNull(ticket);
     }
 }
