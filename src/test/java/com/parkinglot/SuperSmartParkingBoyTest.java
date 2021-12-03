@@ -63,6 +63,23 @@ public class SuperSmartParkingBoyTest {
         assertEquals(fetchedCar2, car2);
     }
     @Test
+    void should_throw_unrecognized_parking_ticket_exception_when_fetch_car_given_parking_boy_with_two_parking_lot_and_unrecognized_ticket() {
+        //given
+        ParkingLot firstParkingLot = new ParkingLot();
+        ParkingLot secondParkingLot = new ParkingLot();
+        List<ParkingLot> ParkingLotList= new ArrayList<>();
+        ParkingLotList.add(firstParkingLot);
+        ParkingLotList.add(secondParkingLot);
+        ParkingBoy parkingboy = new SuperSmartParkingBoy(ParkingLotList);
+        Ticket ticket = new Ticket();
+        //When
+        //then
+        UnrecognizedParkingTicketException unrecognizedParkingTicketException = assertThrows(UnrecognizedParkingTicketException.class, ()->{
+            parkingboy.fetch(ticket);
+        });
+        assertEquals(unrecognizedParkingTicketExceptionMessage, unrecognizedParkingTicketException.getMessage());
+    }
+    @Test
     void should_throw_unrecognized_parking_ticket_exception_when_fetch_car_given_Smart_parking_boy_with_two_parking_lot_and_used_ticket() {
         //given
         ParkingLot firstParkingLot = new ParkingLot();
