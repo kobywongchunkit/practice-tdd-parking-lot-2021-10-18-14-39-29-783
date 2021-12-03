@@ -19,11 +19,11 @@ public class ParkingBoy {
     }
 
     public Ticket park(Car car){
-             return parkingLot.stream()
-                     .filter(parkingLot -> parkingLot.getAvailablePosition() > 0)
-                     .findFirst()
-                     .orElse(parkingLot.get(parkingLot.size()-1))
-                     .park(car);
+         return parkingLot.stream()
+                 .filter(parkingLot -> parkingLot.getAvailablePosition() > 0)
+                 .findFirst()
+                 .orElse(parkingLot.get(parkingLot.size()-1))
+                 .park(car);
     }
 
     public Car fetch(Ticket ticket) {
