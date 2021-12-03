@@ -3,7 +3,11 @@ package com.parkinglot.parkingboy;
 import com.parkinglot.Car;
 import com.parkinglot.ParkingLot;
 import com.parkinglot.Ticket;
+import com.parkinglot.exception.NoAvailablePositionException;
+
 import java.util.List;
+
+import static com.parkinglot.exception.ExceptionMessage.noAvailablePositionExceptionMessage;
 
 
 public class ParkingLotManager extends ParkingBoy{
@@ -14,8 +18,8 @@ public class ParkingLotManager extends ParkingBoy{
     }
 
     public Ticket parkByBoy(int boyIndex, Car car) {
-        if(managementList == null || managementList.size()  <= boyIndex - 1 )
-            return null;
+        if(managementList == null || managementList.size()  < boyIndex + 1 )
+            throw new NoAvailablePositionException(noAvailablePositionExceptionMessage);
         return managementList.get(boyIndex).park(car);
     }
 
