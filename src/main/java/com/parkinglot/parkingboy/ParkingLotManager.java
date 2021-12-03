@@ -18,7 +18,7 @@ public class ParkingLotManager extends ParkingBoy{
     }
 
     public Ticket parkByBoy(int boyIndex, Car car) {
-        if(managementList == null || managementList.size() < boyIndex)
+        if(managementList == null || managementList.size()  <= boyIndex - 1 )
             return null;
         return managementList.get(boyIndex).park(car);
     }

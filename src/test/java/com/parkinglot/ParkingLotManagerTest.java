@@ -4,6 +4,7 @@ import com.parkinglot.exception.NoAvailablePositionException;
 import com.parkinglot.exception.UnrecognizedParkingTicketException;
 import com.parkinglot.parkingboy.ParkingBoy;
 import com.parkinglot.parkingboy.ParkingLotManager;
+import com.parkinglot.parkingboy.SmartParkingBoy;
 import com.parkinglot.parkingboy.SuperSmartParkingBoy;
 import org.junit.jupiter.api.Test;
 
@@ -221,5 +222,18 @@ public class ParkingLotManagerTest {
             parkinglotmanager.fetchFromBoy(ticket);
         });
         assertEquals(unrecognizedParkingTicketExceptionMessage, unrecognizedParkingTicketException.getMessage());
+    }
+    @Test
+    void should_throw_no_available_position_when_park_car_by_boy_given_parking_lot_manager_with_parking_boy_with_full_parking_lot_and_car(){
+        //given
+        ParkingBoy parkingBoy = new ParkingBoy(new ArrayList<>(Arrays.asList(new ParkingLot(1))));
+        parkingBoy.park(new Car());
+        ParkingLotManager parkinglotmanager = new ParkingLotManager(null,new ArrayList<>(Arrays.asList(parkingBoy)));
+        //when
+        //then
+        NoAvailablePositionException noAvailablePositionException =assertThrows(NoAvailablePositionException.class,()->{
+            parkinglotmanager.parkByBoy(0,new Car());
+        });
+        assertEquals(noAvailablePositionExceptionMessage, noAvailablePositionException.getMessage());
     }
 }
