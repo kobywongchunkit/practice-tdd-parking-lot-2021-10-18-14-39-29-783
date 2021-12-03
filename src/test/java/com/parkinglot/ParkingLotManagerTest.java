@@ -63,4 +63,19 @@ public class ParkingLotManagerTest {
         //then
         assertNotNull(ticket);
     }
+    @Test
+    void should_return_ticket_when_park_car_given_parking_lot_manager_with_two_parking_lot(){
+        //given
+        ParkingLot firstParkingLot = new ParkingLot();
+        ParkingLot secondParkingLot = new ParkingLot();
+        List<ParkingLot> ParkingLotList= new ArrayList<>();
+        ParkingLotList.add(firstParkingLot);
+        ParkingLotList.add(secondParkingLot);
+        ParkingLotManager parkinglotmanager = new ParkingLotManager(ParkingLotList, null);
+        Ticket ticket = parkinglotmanager.park(new Car());
+        //then
+        assertNotNull(ticket);
+        assertEquals(9, firstParkingLot.getAvailablePosition());
+        assertEquals(10,secondParkingLot.getAvailablePosition());
+    }
 }
