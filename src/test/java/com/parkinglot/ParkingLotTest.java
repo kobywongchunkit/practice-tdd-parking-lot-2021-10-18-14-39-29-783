@@ -83,4 +83,5 @@ public class ParkingLotTest {
         });
         assertEquals(unrecognizedParkingTicketExceptionMessage, unrecognizedParkingTicketException.getMessage());
     }
+
 }
