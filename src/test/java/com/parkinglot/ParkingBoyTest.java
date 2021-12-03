@@ -19,7 +19,7 @@ public class ParkingBoyTest {
         assertNotNull(ticket);
     }
     @Test
-    void should_return_ticket_when_park_car_given_standard_parking_bot_with_two_parking_lot(){
+    void should_return_ticket_when_park_car_given_standard_parking_boy_with_two_parking_lot(){
         //given
         ParkingLot firstParkingLot = new ParkingLot();
         ParkingLot secondParkingLot = new ParkingLot();
@@ -32,5 +32,21 @@ public class ParkingBoyTest {
         assertNotNull(ticket);
         assertEquals(9, firstParkingLot.getAvailablePosition());
         assertEquals(10,secondParkingLot.getAvailablePosition());
+    }
+    @Test
+    void should_return_ticket_when_park_car_given_standard_parking_boy_with_two_parking_lot_and_parking_lot_1_is_full(){
+        //given
+        ParkingLot firstParkingLot = new ParkingLot(1);
+        ParkingLot secondParkingLot = new ParkingLot();
+        List<ParkingLot> ParkingLotList= new ArrayList<>();
+        ParkingLotList.add(firstParkingLot);
+        ParkingLotList.add(secondParkingLot);
+        firstParkingLot.park(new Car());
+        ParkingBoy parkingboy = new ParkingBoy(ParkingLotList);
+        Ticket ticket = parkingboy.park(new Car());
+        //then
+        assertNotNull(ticket);
+        assertEquals(0, firstParkingLot.getAvailablePosition());
+        assertEquals(9, secondParkingLot.getAvailablePosition());
     }
 }
