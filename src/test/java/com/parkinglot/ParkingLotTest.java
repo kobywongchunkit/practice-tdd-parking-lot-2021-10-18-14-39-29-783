@@ -75,7 +75,7 @@ public class ParkingLotTest {
         assertNull(fetchedCar);
     }
     @Test
-    void should_throw_no_available_postion_when_park_car_given_full_parking_lot_and_car(){
+    void should_throw_no_available_position_when_park_car_given_full_parking_lot_and_car(){
         //given
         ParkingLot parkingLot = new ParkingLot(1);
         parkingLot.park(new Car());
