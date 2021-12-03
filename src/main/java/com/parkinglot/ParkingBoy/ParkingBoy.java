@@ -1,6 +1,9 @@
-package com.parkinglot;
+package com.parkinglot.ParkingBoy;
 
+import com.parkinglot.Car;
 import com.parkinglot.Exception.*;
+import com.parkinglot.ParkingLot;
+import com.parkinglot.Ticket;
 
 import java.util.List;
 import java.util.Optional;

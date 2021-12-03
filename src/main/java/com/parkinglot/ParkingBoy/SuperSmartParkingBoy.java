@@ -1,6 +1,9 @@
-package com.parkinglot;
+package com.parkinglot.ParkingBoy;
 
+import com.parkinglot.Car;
 import com.parkinglot.Exception.NoAvailablePositionException;
+import com.parkinglot.ParkingLot;
+import com.parkinglot.Ticket;
 
 import java.util.Comparator;
 import java.util.List;
