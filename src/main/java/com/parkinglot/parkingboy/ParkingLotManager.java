@@ -3,12 +3,8 @@ package com.parkinglot.parkingboy;
 import com.parkinglot.Car;
 import com.parkinglot.ParkingLot;
 import com.parkinglot.Ticket;
-import com.parkinglot.exception.UnrecognizedParkingTicketException;
-
 import java.util.List;
-import java.util.Optional;
 
-import static com.parkinglot.exception.ExceptionMessage.unrecognizedParkingTicketExceptionMessage;
 
 public class ParkingLotManager extends ParkingBoy{
     public List<ParkingBoy> managementList;
