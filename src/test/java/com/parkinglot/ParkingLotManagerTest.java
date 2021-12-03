@@ -37,5 +37,19 @@ public class ParkingLotManagerTest {
         //then
         assertEquals(car, fetchedCar);
     }
-
+    @Test
+    void should_return_correct_car_when_fetch_car_by_parking_boy_given_parking_lot_manager_with_parkingBoy_and_two_parked_car() {
+        //given
+        ParkingBoy parkingBoy_1 = new ParkingBoy(new ArrayList<>(Arrays.asList(new ParkingLot(), new ParkingLot())));
+        ParkingBoy parkingBoy_2 = new SuperSmartParkingBoy(new ArrayList<>(Arrays.asList(new ParkingLot(), new ParkingLot())));
+        Car car1 = new Car();
+        Car car2 = new Car();
+        ParkingLotManager parkinglotmanager = new ParkingLotManager(null,new ArrayList<>(Arrays.asList(parkingBoy_1,parkingBoy_2)));
+        //When
+        Car fetchedCar1 = parkinglotmanager.fetchFromBoy(parkingBoy_1.park(car1));
+        Car fetchedCar2 = parkinglotmanager.fetchFromBoy(parkingBoy_2.park(car2));
+        //then
+        assertEquals(fetchedCar1, car1);
+        assertEquals(fetchedCar2, car2);
+    }
 }
