@@ -10,7 +10,7 @@ import static com.parkinglot.Exception.ExceptionMessage.noAvailablePositionExcep
 import static com.parkinglot.Exception.ExceptionMessage.unrecognizedParkingTicketExceptionMessage;
 
 public class ParkingBoy {
-    private List<ParkingLot> parkingLot;
+    protected List<ParkingLot> parkingLot;
     public ParkingBoy(List<ParkingLot> parkingLot) {
         this.parkingLot = parkingLot;
     }
