@@ -3,8 +3,13 @@ package com.parkinglot.parkingboy;
 import com.parkinglot.Car;
 import com.parkinglot.ParkingLot;
 import com.parkinglot.Ticket;
+import com.parkinglot.exception.NoAvailablePositionException;
+import com.parkinglot.exception.UnrecognizedParkingTicketException;
 
 import java.util.List;
+
+import static com.parkinglot.exception.ExceptionMessage.noAvailablePositionExceptionMessage;
+import static com.parkinglot.exception.ExceptionMessage.unrecognizedParkingTicketExceptionMessage;
 
 
 public class ParkingBoy {
@@ -17,7 +22,7 @@ public class ParkingBoy {
          return parkingLot.stream()
                  .filter(parkingLot -> parkingLot.getAvailablePosition() > 0)
                  .findFirst()
-                 .orElse(parkingLot.get(parkingLot.size()-1))
+                 .orElseThrow(() -> new NoAvailablePositionException(noAvailablePositionExceptionMessage))
                  .park(car);
     }
 
@@ -25,7 +30,7 @@ public class ParkingBoy {
         return parkingLot.stream()
                 .filter(parkingLot -> parkingLot.isTicketValid(ticket))
                 .findFirst()
-                .orElse(parkingLot.get(parkingLot.size()-1))
+                .orElseThrow(() -> new UnrecognizedParkingTicketException(unrecognizedParkingTicketExceptionMessage))
                 .fetch(ticket);
     }
 
