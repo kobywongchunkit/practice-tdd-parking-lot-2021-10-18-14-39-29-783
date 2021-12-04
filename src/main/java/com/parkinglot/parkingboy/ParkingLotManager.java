@@ -13,7 +13,7 @@ import static com.parkinglot.exception.ExceptionMessage.unrecognizedParkingTicke
 
 
 public class ParkingLotManager extends ParkingBoy{
-    public List<ParkingBoy> managementList;
+    private final List<ParkingBoy> managementList;
     public ParkingLotManager(List<ParkingLot> parkingLot,List<ParkingBoy> managementList) {
         super(parkingLot);
         this.managementList = managementList;
