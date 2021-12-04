@@ -43,6 +43,6 @@ public class ParkingLot {
     }
 
     public float getAvailablePositionRate(){
-        return new Integer(ticketCarMap.size()).floatValue()/new Integer(capacity).floatValue();
+        return (float)ticketCarMap.size()/capacity;
     }
 }
