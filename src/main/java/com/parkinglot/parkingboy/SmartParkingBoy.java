@@ -19,9 +19,11 @@ public class SmartParkingBoy extends ParkingBoy {
     }
     @Override
     public Ticket park(Car car){
+        if(parkingLot.stream().noneMatch(ParkingLot::hasAvailablePosition))
+            throw new NoAvailablePositionException(noAvailablePositionExceptionMessage);
         return parkingLot.stream()
                 .max(Comparator.comparing(ParkingLot::getAvailablePosition))
-                .orElseThrow(() -> new NoAvailablePositionException(noAvailablePositionExceptionMessage))
+                .get()
                 .park(car);
 
     }

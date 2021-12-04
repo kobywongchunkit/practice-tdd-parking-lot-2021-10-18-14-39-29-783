@@ -21,7 +21,7 @@ public class ParkingLot {
         ticketCarMap.put(ticket, car);
         return ticket;
     }
-    private boolean hasAvailablePosition(){
+    public boolean hasAvailablePosition(){
         return ticketCarMap.size() < capacity;
     }
 
