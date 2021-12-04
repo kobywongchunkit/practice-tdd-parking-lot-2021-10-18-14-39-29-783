@@ -4,10 +4,12 @@ import com.parkinglot.Car;
 import com.parkinglot.ParkingLot;
 import com.parkinglot.Ticket;
 import com.parkinglot.exception.NoAvailablePositionException;
+import com.parkinglot.exception.UnrecognizedParkingTicketException;
 
 import java.util.List;
 
 import static com.parkinglot.exception.ExceptionMessage.noAvailablePositionExceptionMessage;
+import static com.parkinglot.exception.ExceptionMessage.unrecognizedParkingTicketExceptionMessage;
 
 
 public class ParkingLotManager extends ParkingBoy{
@@ -27,7 +29,7 @@ public class ParkingLotManager extends ParkingBoy{
         return managementList.stream()
                 .filter(parkingBoy -> parkingBoy.isTicketCanFetchCar(ticket))
                 .findFirst()
-                .orElse(managementList.get(managementList.size()-1))
+                .orElseThrow(() -> new UnrecognizedParkingTicketException(unrecognizedParkingTicketExceptionMessage))
                 .fetch(ticket);
     }
 }
