@@ -120,5 +120,21 @@ public class SmartParkingBoyTest {
         });
         assertEquals(noAvailablePositionExceptionMessage, noAvailablePositionException.getMessage());
     }
+    @Test
+    void should_park_at_parking_lot_with_more_space_when_park_car_given_smart_parking_boy_with_two_parking_lot_and_parking_lot_2_is_with_more_space(){
+        //given
+        ParkingLot firstParkingLot = new ParkingLot();
+        ParkingLot secondParkingLot = new ParkingLot(20);
+        List<ParkingLot> ParkingLotList= new ArrayList<>();
+        ParkingLotList.add(firstParkingLot);
+        ParkingLotList.add(secondParkingLot);
+        ParkingBoy parkingboy = new SmartParkingBoy(ParkingLotList);
+        //When
+        Ticket ticket = parkingboy.park(new Car());
+        //then
+        assertNotNull(ticket);
+        assertEquals(10, firstParkingLot.getAvailablePositionCount());
+        assertEquals(19, secondParkingLot.getAvailablePositionCount());
+    }
 
 }
