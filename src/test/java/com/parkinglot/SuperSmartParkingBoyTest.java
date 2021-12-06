@@ -119,4 +119,21 @@ public class SuperSmartParkingBoyTest {
         });
         assertEquals(noAvailablePositionExceptionMessage, noAvailablePositionException.getMessage());
     }
+    @Test
+    void should_park_at_parking_lot_with_lower_used_rate_when_park_car_given_smart_parking_boy_with_two_parking_lot_and_parking_lot_2_is_with_lower_used_rate(){
+        //given
+        ParkingLot firstParkingLot = new ParkingLot(2);
+        ParkingLot secondParkingLot = new ParkingLot(3);
+        List<ParkingLot> ParkingLotList= new ArrayList<>();
+        ParkingLotList.add(firstParkingLot);
+        ParkingLotList.add(secondParkingLot);
+        ParkingBoy parkingboy = new SuperSmartParkingBoy(ParkingLotList);
+        firstParkingLot.park(new Car());
+        secondParkingLot.park(new Car());
+        //When
+        parkingboy.park(new Car());
+        //then
+        assertEquals(1, firstParkingLot.getAvailablePositionCount());
+        assertEquals(1, secondParkingLot.getAvailablePositionCount());
+    }
 }
