@@ -19,8 +19,10 @@ public class ParkingBoy {
     }
 
     public Ticket park(Car car){
+        if(parkingLot.stream().noneMatch(ParkingLot::hasAvailablePosition))
+            throw new NoAvailablePositionException(noAvailablePositionExceptionMessage);
          return parkingLot.stream()
-                 .filter(parkingLot -> parkingLot.getAvailablePosition() > 0)
+                 .filter(parkingLot -> parkingLot.getAvailablePositionCount() > 0)
                  .findFirst()
                  .orElseThrow(() -> new NoAvailablePositionException(noAvailablePositionExceptionMessage))
                  .park(car);

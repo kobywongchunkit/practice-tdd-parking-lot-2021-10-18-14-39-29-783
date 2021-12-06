@@ -35,8 +35,8 @@ public class ParkingBoyTest {
         Ticket ticket = parkingboy.park(new Car());
         //then
         assertNotNull(ticket);
-        assertEquals(9, firstParkingLot.getAvailablePosition());
-        assertEquals(10,secondParkingLot.getAvailablePosition());
+        assertEquals(9, firstParkingLot.getAvailablePositionCount());
+        assertEquals(10,secondParkingLot.getAvailablePositionCount());
     }
     @Test
     void should_return_ticket_when_park_car_given_standard_parking_boy_with_two_parking_lot_and_parking_lot_1_is_full(){
@@ -52,8 +52,8 @@ public class ParkingBoyTest {
         Ticket ticket = parkingboy.park(new Car());
         //then
         assertNotNull(ticket);
-        assertEquals(0, firstParkingLot.getAvailablePosition());
-        assertEquals(9, secondParkingLot.getAvailablePosition());
+        assertEquals(0, firstParkingLot.getAvailablePositionCount());
+        assertEquals(9, secondParkingLot.getAvailablePositionCount());
     }
     @Test
     void should_return_two_car_when_fetch_two_car_given_standard_parking_boy_with_two_parking_lot_with_two_parked_car_in_same_parking_lot(){

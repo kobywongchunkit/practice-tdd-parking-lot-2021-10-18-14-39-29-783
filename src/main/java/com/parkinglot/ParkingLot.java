@@ -25,16 +25,13 @@ public class ParkingLot {
         return ticketCarMap.size() < capacity;
     }
 
-    public int getAvailablePosition(){
+    public int getAvailablePositionCount(){
         return capacity - ticketCarMap.size();
     }
     public Car fetch(Ticket ticket) {
         if (!isTicketValid(ticket))
             throw new UnrecognizedParkingTicketException(unrecognizedParkingTicketExceptionMessage);
-        Car fetchedCar = ticketCarMap.get(ticket);
-        if (fetchedCar != null){
-            ticketCarMap.remove(ticket);
-        }
+        Car fetchedCar = ticketCarMap.remove(ticket);
         return fetchedCar;
     }
 
